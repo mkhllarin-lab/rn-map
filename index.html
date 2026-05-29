@@ -2,15 +2,15 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<title>RN Map</title>
+<title>RN Fleet Map</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
-html, body, #map {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,body,#map{
+    height:100%;
+    margin:0;
+    padding:0;
 }
 </style>
 
@@ -23,21 +23,43 @@ html, body, #map {
 
 <script>
 
-const map = L.map('map').setView([55.75, 37.61], 5);
+const map = L.map('map').setView([55.75,37.61],5);
 
 L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap'
+        maxZoom:19,
+        attribution:'© OpenStreetMap'
     }
 ).addTo(map);
 
-fetch('vehicles.geojson')
-.then(response => response.json())
-.then(data => {
+const vehicleCoords = [];
 
-    console.log('Vehicles loaded:', data);
+function distanceKm(lat1, lon1, lat2, lon2)
+{
+    const R = 6371;
+
+    const dLat = (lat2-lat1) * Math.PI / 180;
+    const dLon = (lon2-lon1) * Math.PI / 180;
+
+    const a =
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1*Math.PI/180) *
+        Math.cos(lat2*Math.PI/180) *
+        Math.sin(dLon/2) *
+        Math.sin(dLon/2);
+
+    return R * 2 * Math.atan2(
+        Math.sqrt(a),
+        Math.sqrt(1-a)
+    );
+}
+
+fetch('vehicles.geojson')
+
+.then(response => response.json())
+
+.then(data => {
 
     const bounds = [];
 
@@ -45,6 +67,11 @@ fetch('vehicles.geojson')
 
         const lat = feature.geometry.coordinates[1];
         const lon = feature.geometry.coordinates[0];
+
+        vehicleCoords.push({
+            lat: lat,
+            lon: lon
+        });
 
         const props = feature.properties;
 
@@ -68,12 +95,86 @@ fetch('vehicles.geojson')
         map.fitBounds(bounds);
     }
 
+    return fetch('stations.geojson');
+
 })
+
+.then(response => response.json())
+
+.then(data => {
+
+    data.features.forEach(feature => {
+
+        const lat = feature.geometry.coordinates[1];
+        const lon = feature.geometry.coordinates[0];
+
+        let nearVehicle = false;
+
+        for(const v of vehicleCoords)
+        {
+            if(distanceKm(
+                lat,
+                lon,
+                v.lat,
+                v.lon
+            ) <= 500)
+            {
+                nearVehicle = true;
+                break;
+            }
+        }
+
+        if(!nearVehicle)
+        {
+            return;
+        }
+
+        const props = feature.properties;
+
+        let color = 'gray';
+
+        const dt = parseFloat(
+            String(props.dt || '')
+                .replace(',', '.')
+        );
+
+        if(!isNaN(dt))
+        {
+            if(dt < 75)
+                color = 'green';
+            else if(dt <= 80)
+                color = 'orange';
+            else
+                color = 'red';
+        }
+
+        const marker = L.circleMarker(
+            [lat, lon],
+            {
+                radius:4,
+                color:color
+            }
+        );
+
+        marker.bindPopup(
+            '<b>' + (props.azs || '') + '</b><br>' +
+            'ДТ: ' + (props.dt || '') + '<br>' +
+            (props.road || '') + '<br>' +
+            'км: ' + (props.km || '') + '<br>' +
+            (props.addr || '')
+        );
+
+        marker.addTo(map);
+
+    });
+
+})
+
 .catch(error => {
 
     console.error(error);
 
-    alert('Ошибка загрузки vehicles.geojson');
+    alert('Ошибка загрузки данных');
 
 });
 
