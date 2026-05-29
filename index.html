@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -12,10 +13,34 @@ html,body,#map{
     margin:0;
     padding:0;
 }
+
+#info{
+    position:absolute;
+    top:10px;
+    left:60px;
+    z-index:1000;
+    background:white;
+    padding:10px;
+    border-radius:6px;
+    box-shadow:0 0 10px rgba(0,0,0,.3);
+    font-family:Arial;
+}
+
+.legend{
+    background:white;
+    padding:10px;
+    border-radius:6px;
+}
 </style>
 
 </head>
+
 <body>
+
+<div id="info">
+<b>RN Fleet Map</b><br>
+Нажмите на автомобиль
+</div>
 
 <div id="map"></div>
 
@@ -26,67 +51,118 @@ html,body,#map{
 const map = L.map('map').setView([55.75,37.61],5);
 
 L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        maxZoom:19,
-        attribution:'© OpenStreetMap'
-    }
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+    maxZoom:19,
+    attribution:'© OpenStreetMap'
+}
 ).addTo(map);
 
-const vehicleCoords = [];
+const vehicleLayer = L.layerGroup().addTo(map);
+const stationLayer = L.layerGroup().addTo(map);
 
-function distanceKm(lat1, lon1, lat2, lon2)
+let stationsData = null;
+
+function stationColor(dt)
 {
-    const R = 6371;
-
-    const dLat = (lat2-lat1) * Math.PI / 180;
-    const dLon = (lon2-lon1) * Math.PI / 180;
-
-    const a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
-        Math.cos(lat1*Math.PI/180) *
-        Math.cos(lat2*Math.PI/180) *
-        Math.sin(dLon/2) *
-        Math.sin(dLon/2);
-
-    return R * 2 * Math.atan2(
-        Math.sqrt(a),
-        Math.sqrt(1-a)
+    const price = parseFloat(
+        String(dt).replace(',','.')
     );
+
+    if(isNaN(price)) return 'gray';
+    if(price < 75) return 'green';
+    if(price <= 80) return 'orange';
+
+    return 'red';
 }
 
-fetch('vehicles.geojson')
+function showStationsForVehicle(roadCode, roadKm)
+{
+    stationLayer.clearLayers();
 
-.then(response => response.json())
+    let count = 0;
 
-.then(data => {
+    stationsData.features.forEach(f => {
+
+        const p = f.properties;
+
+        if(p.roadCode !== roadCode)
+            return;
+
+        const km = Number(p.roadKm);
+
+        if(Math.abs(km - roadKm) > 200)
+            return;
+
+        count++;
+
+        const marker = L.circleMarker(
+            [
+                f.geometry.coordinates[1],
+                f.geometry.coordinates[0]
+            ],
+            {
+                radius:6,
+                color:stationColor(p.dt)
+            }
+        );
+
+        marker.bindPopup(
+            '<b>' + p.azs + '</b><br>' +
+            'ДТ: ' + p.dt + '<br>' +
+            'Трасса: ' + p.road + '<br>' +
+            'Км: ' + p.roadKm + '<br>' +
+            p.addr
+        );
+
+        stationLayer.addLayer(marker);
+
+    });
+
+    document.getElementById('info').innerHTML =
+        '<b>RN Fleet Map</b><br>' +
+        'Трасса: ' + roadCode + '<br>' +
+        'Км машины: ' + roadKm + '<br>' +
+        'АЗС найдено: ' + count;
+}
+
+Promise.all([
+    fetch('vehicles.geojson').then(r => r.json()),
+    fetch('stations.geojson').then(r => r.json())
+])
+.then(([vehicles, stations]) => {
+
+    stationsData = stations;
 
     const bounds = [];
 
-    data.features.forEach(feature => {
+    vehicles.features.forEach(f => {
 
-        const lat = feature.geometry.coordinates[1];
-        const lon = feature.geometry.coordinates[0];
+        const p = f.properties;
 
-        vehicleCoords.push({
-            lat: lat,
-            lon: lon
-        });
+        const lat = f.geometry.coordinates[1];
+        const lon = f.geometry.coordinates[0];
 
-        const props = feature.properties;
+        bounds.push([lat, lon]);
 
         const marker = L.marker([lat, lon]);
 
         marker.bindPopup(
-            '<b>' + (props.vehicle || '') + '</b><br>' +
-            'Топливо: ' + (props.fuel || '') + '<br>' +
-            'Скорость: ' + (props.speed || '') + ' км/ч<br>' +
-            'Курс: ' + (props.direction || '') + '°'
+            '<b>' + p.vehicle + '</b><br>' +
+            'Топливо: ' + p.fuel + '<br>' +
+            'Скорость: ' + p.speed + ' км/ч<br>' +
+            'Трасса: ' + p.roadCode + '<br>' +
+            'Км: ' + p.roadKm
         );
 
-        marker.addTo(map);
+        marker.on('click', () => {
+            showStationsForVehicle(
+                p.roadCode,
+                Number(p.roadKm)
+            );
+        });
 
-        bounds.push([lat, lon]);
+        vehicleLayer.addLayer(marker);
 
     });
 
@@ -95,88 +171,26 @@ fetch('vehicles.geojson')
         map.fitBounds(bounds);
     }
 
-    return fetch('stations.geojson');
-
-})
-
-.then(response => response.json())
-
-.then(data => {
-
-    data.features.forEach(feature => {
-
-        const lat = feature.geometry.coordinates[1];
-        const lon = feature.geometry.coordinates[0];
-
-        let nearVehicle = false;
-
-        for(const v of vehicleCoords)
-        {
-            if(distanceKm(
-                lat,
-                lon,
-                v.lat,
-                v.lon
-            ) <= 500)
-            {
-                nearVehicle = true;
-                break;
-            }
-        }
-
-        if(!nearVehicle)
-        {
-            return;
-        }
-
-        const props = feature.properties;
-
-        let color = 'gray';
-
-        const dt = parseFloat(
-            String(props.dt || '')
-                .replace(',', '.')
-        );
-
-        if(!isNaN(dt))
-        {
-            if(dt < 75)
-                color = 'green';
-            else if(dt <= 80)
-                color = 'orange';
-            else
-                color = 'red';
-        }
-
-        const marker = L.circleMarker(
-            [lat, lon],
-            {
-                radius:4,
-                color:color
-            }
-        );
-
-        marker.bindPopup(
-            '<b>' + (props.azs || '') + '</b><br>' +
-            'ДТ: ' + (props.dt || '') + '<br>' +
-            (props.road || '') + '<br>' +
-            'км: ' + (props.km || '') + '<br>' +
-            (props.addr || '')
-        );
-
-        marker.addTo(map);
-
-    });
-
-})
-
-.catch(error => {
-
-    console.error(error);
-
-    alert('Ошибка загрузки данных');
-
 });
+
+const legend = L.control({
+    position:'bottomright'
+});
+
+legend.onAdd = function()
+{
+    const div = L.DomUtil.create('div','legend');
+
+    div.innerHTML =
+        '<b>Цена ДТ</b><br>' +
+        '🟢 < 75<br>' +
+        '🟠 75-80<br>' +
+        '🔴 > 80';
+
+    return div;
+};
+
+legend.addTo(map);
 
 </script>
 
