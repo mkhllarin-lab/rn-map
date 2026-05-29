@@ -3,8 +3,10 @@
                      {
                          "properties":  {
                                             "direction":  50,
-                                            "vehicle":  "739-РђРђ698NX",
                                             "fuel":  383.3984962406015,
+                                            "roadKm":  259,
+                                            "roadCode":  "BY.M6",
+                                            "vehicle":  "739-РђРђ698NX",
                                             "speed":  0
                                         },
                          "type":  "Feature",
@@ -19,8 +21,10 @@
                      {
                          "properties":  {
                                             "direction":  73,
-                                            "vehicle":  "2309-c343РѕРј",
                                             "fuel":  1224.0519480519479,
+                                            "roadKm":  222,
+                                            "roadCode":  "P258",
+                                            "vehicle":  "2309-c343РѕРј",
                                             "speed":  72
                                         },
                          "type":  "Feature",
@@ -35,8 +39,10 @@
                      {
                          "properties":  {
                                             "direction":  331,
-                                            "vehicle":  "2424-С…365СЂС‚",
                                             "fuel":  228.3916230366492,
+                                            "roadKm":  1277,
+                                            "roadCode":  "P255",
+                                            "vehicle":  "2424-С…365СЂС‚",
                                             "speed":  76
                                         },
                          "type":  "Feature",
@@ -51,8 +57,10 @@
                      {
                          "properties":  {
                                             "direction":  294,
-                                            "vehicle":  "2427-С…621С‚С‚",
                                             "fuel":  333.22389026892756,
+                                            "roadKm":  148,
+                                            "roadCode":  "P255",
+                                            "vehicle":  "2427-С…621С‚С‚",
                                             "speed":  0
                                         },
                          "type":  "Feature",
@@ -67,8 +75,10 @@
                      {
                          "properties":  {
                                             "direction":  314,
-                                            "vehicle":  "2310-СЃ793РѕРє",
                                             "fuel":  392.7581941867656,
+                                            "roadKm":  1810,
+                                            "roadCode":  "P255",
+                                            "vehicle":  "2310-СЃ793РѕРє",
                                             "speed":  49
                                         },
                          "type":  "Feature",
@@ -83,8 +93,10 @@
                      {
                          "properties":  {
                                             "direction":  330,
-                                            "vehicle":  "2425-o354РЅРј",
                                             "fuel":  417.98983739837405,
+                                            "roadKm":  493,
+                                            "roadCode":  "P258",
+                                            "vehicle":  "2425-o354РЅРј",
                                             "speed":  20
                                         },
                          "type":  "Feature",
@@ -99,8 +111,10 @@
                      {
                          "properties":  {
                                             "direction":  266,
-                                            "vehicle":  "2105-Сѓ107РІС‚",
                                             "fuel":  837.6905751905751,
+                                            "roadKm":  1096,
+                                            "roadCode":  "P258",
+                                            "vehicle":  "2105-Сѓ107РІС‚",
                                             "speed":  94
                                         },
                          "type":  "Feature",
@@ -115,8 +129,10 @@
                      {
                          "properties":  {
                                             "direction":  291,
-                                            "vehicle":  "722-NR907MM",
                                             "fuel":  193.0548458524953,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "722-NR907MM",
                                             "speed":  80
                                         },
                          "type":  "Feature",
@@ -131,8 +147,10 @@
                      {
                          "properties":  {
                                             "direction":  158,
-                                            "vehicle":  "2409-e086py",
                                             "fuel":  436.6177339901478,
+                                            "roadKm":  1015,
+                                            "roadCode":  "M7",
+                                            "vehicle":  "2409-e086py",
                                             "speed":  88
                                         },
                          "type":  "Feature",
@@ -147,8 +165,10 @@
                      {
                          "properties":  {
                                             "direction":  266,
-                                            "vehicle":  "736-AA902KD",
                                             "fuel":  725.6813186813188,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "736-AA902KD",
                                             "speed":  83
                                         },
                          "type":  "Feature",
@@ -163,8 +183,10 @@
                      {
                          "properties":  {
                                             "direction":  46,
-                                            "vehicle":  "725Рї-NR332YU",
                                             "fuel":  0.0,
+                                            "roadKm":  191,
+                                            "roadCode":  "BY.M6",
+                                            "vehicle":  "725Рї-NR332YU",
                                             "speed":  68
                                         },
                          "type":  "Feature",
@@ -179,8 +201,10 @@
                      {
                          "properties":  {
                                             "direction":  265,
-                                            "vehicle":  "734-AA979JH",
                                             "fuel":  152.31020408163266,
+                                            "roadKm":  122,
+                                            "roadCode":  "P508",
+                                            "vehicle":  "734-AA979JH",
                                             "speed":  0
                                         },
                          "type":  "Feature",
@@ -195,8 +219,10 @@
                      {
                          "properties":  {
                                             "direction":  231,
-                                            "vehicle":  "2113-С‚679РµСѓ",
                                             "fuel":  512.1375921375922,
+                                            "roadKm":  904,
+                                            "roadCode":  "P258",
+                                            "vehicle":  "2113-С‚679РµСѓ",
                                             "speed":  80
                                         },
                          "type":  "Feature",
@@ -211,8 +237,10 @@
                      {
                          "properties":  {
                                             "direction":  265,
-                                            "vehicle":  "2406-Рµ830С…СЂ",
                                             "fuel":  966.266253869969,
+                                            "roadKm":  574,
+                                            "roadCode":  "M7",
+                                            "vehicle":  "2406-Рµ830С…СЂ",
                                             "speed":  81
                                         },
                          "type":  "Feature",
@@ -227,8 +255,10 @@
                      {
                          "properties":  {
                                             "direction":  320,
-                                            "vehicle":  "2108-Рµ769РµС‚Р­",
                                             "fuel":  959.6804915514592,
+                                            "roadKm":  370,
+                                            "roadCode":  "A350",
+                                            "vehicle":  "2108-Рµ769РµС‚Р­",
                                             "speed":  76
                                         },
                          "type":  "Feature",
@@ -243,8 +273,10 @@
                      {
                          "properties":  {
                                             "direction":  45,
-                                            "vehicle":  "2303-c386op",
                                             "fuel":  391.2681791739384,
+                                            "roadKm":  191,
+                                            "roadCode":  "BY.M6",
+                                            "vehicle":  "2303-c386op",
                                             "speed":  71
                                         },
                          "type":  "Feature",
@@ -259,8 +291,10 @@
                      {
                          "properties":  {
                                             "direction":  65,
-                                            "vehicle":  "742Рї-AA216YY",
                                             "fuel":  309.9105392156863,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "742Рї-AA216YY",
                                             "speed":  82
                                         },
                          "type":  "Feature",
@@ -275,8 +309,10 @@
                      {
                          "properties":  {
                                             "direction":  122,
-                                            "vehicle":  "2416-a332py",
                                             "fuel":  435.4901960784314,
+                                            "roadKm":  210,
+                                            "roadCode":  "P255",
+                                            "vehicle":  "2416-a332py",
                                             "speed":  90
                                         },
                          "type":  "Feature",
@@ -291,8 +327,10 @@
                      {
                          "properties":  {
                                             "direction":  39,
-                                            "vehicle":  "2111-Рѕ114РµСЃ",
                                             "fuel":  1380.337636544191,
+                                            "roadKm":  1054,
+                                            "roadCode":  "P254",
+                                            "vehicle":  "2111-Рѕ114РµСЃ",
                                             "speed":  10
                                         },
                          "type":  "Feature",
@@ -307,8 +345,10 @@
                      {
                          "properties":  {
                                             "direction":  262,
-                                            "vehicle":  "713Рї-NR915YV",
                                             "fuel":  1.0,
+                                            "roadKm":  75,
+                                            "roadCode":  "BY.M6",
+                                            "vehicle":  "713Рї-NR915YV",
                                             "speed":  82
                                         },
                          "type":  "Feature",
@@ -323,8 +363,10 @@
                      {
                          "properties":  {
                                             "direction":  123,
-                                            "vehicle":  "2121-С‚768С…РЅ",
                                             "fuel":  913.3071278825996,
+                                            "roadKm":  188,
+                                            "roadCode":  "M5",
+                                            "vehicle":  "2121-С‚768С…РЅ",
                                             "speed":  60
                                         },
                          "type":  "Feature",
@@ -339,8 +381,10 @@
                      {
                          "properties":  {
                                             "direction":  65,
-                                            "vehicle":  "738-AA178KZ",
                                             "fuel":  519.5524104378594,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "738-AA178KZ",
                                             "speed":  83
                                         },
                          "type":  "Feature",
@@ -355,8 +399,10 @@
                      {
                          "properties":  {
                                             "direction":  201,
-                                            "vehicle":  "712 - NR398MN",
                                             "fuel":  724.6299871299871,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "712 - NR398MN",
                                             "speed":  83
                                         },
                          "type":  "Feature",
@@ -371,8 +417,10 @@
                      {
                          "properties":  {
                                             "direction":  263,
-                                            "vehicle":  "2102-Р°559РІСѓ",
                                             "fuel":  1274.1592920353983,
+                                            "roadKm":  75,
+                                            "roadCode":  "BY.M6",
+                                            "vehicle":  "2102-Р°559РІСѓ",
                                             "speed":  82
                                         },
                          "type":  "Feature",
@@ -387,8 +435,10 @@
                      {
                          "properties":  {
                                             "direction":  56,
-                                            "vehicle":  "739Рї-AA279YO",
                                             "fuel":  0.0,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "739Рї-AA279YO",
                                             "speed":  83
                                         },
                          "type":  "Feature",
@@ -403,8 +453,10 @@
                      {
                          "properties":  {
                                             "direction":  1,
-                                            "vehicle":  "2404-e451xo",
                                             "fuel":  721.2303382891618,
+                                            "roadKm":  484,
+                                            "roadCode":  "A350",
+                                            "vehicle":  "2404-e451xo",
                                             "speed":  0
                                         },
                          "type":  "Feature",
@@ -419,8 +471,10 @@
                      {
                          "properties":  {
                                             "direction":  283,
-                                            "vehicle":  "2420-a248py",
                                             "fuel":  220.65126924677486,
+                                            "roadKm":  1075,
+                                            "roadCode":  "M7",
+                                            "vehicle":  "2420-a248py",
                                             "speed":  82
                                         },
                          "type":  "Feature",
@@ -435,8 +489,10 @@
                      {
                          "properties":  {
                                             "direction":  58,
-                                            "vehicle":  "737-AA966KD",
                                             "fuel":  399.74721941354903,
+                                            "roadKm":  39,
+                                            "roadCode":  "P516",
+                                            "vehicle":  "737-AA966KD",
                                             "speed":  81
                                         },
                          "type":  "Feature",
@@ -451,8 +507,10 @@
                      {
                          "properties":  {
                                             "direction":  164,
-                                            "vehicle":  "2119-РЅ715РєРє",
                                             "fuel":  647.2727272727273,
+                                            "roadKm":  27,
+                                            "roadCode":  "BY.M9",
+                                            "vehicle":  "2119-РЅ715РєРє",
                                             "speed":  80
                                         },
                          "type":  "Feature",
