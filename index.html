@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -23,15 +24,17 @@ html,body,#map{
     border-radius:6px;
     box-shadow:0 0 10px rgba(0,0,0,.3);
     font-family:Arial;
-    min-width:220px;
+    min-width:260px;
 }
 
 .legend{
     background:white;
     padding:10px;
     border-radius:6px;
+    line-height:20px;
 }
 </style>
+
 </head>
 
 <body>
@@ -62,6 +65,26 @@ const stationsLayer = L.layerGroup().addTo(map);
 
 let stationsData = null;
 
+function distanceKm(lat1, lon1, lat2, lon2)
+{
+    const R = 6371;
+
+    const dLat = (lat2-lat1) * Math.PI / 180;
+    const dLon = (lon2-lon1) * Math.PI / 180;
+
+    const a =
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1*Math.PI/180) *
+        Math.cos(lat2*Math.PI/180) *
+        Math.sin(dLon/2) *
+        Math.sin(dLon/2);
+
+    return R * 2 * Math.atan2(
+        Math.sqrt(a),
+        Math.sqrt(1-a)
+    );
+}
+
 function stationColor(dt)
 {
     const price = parseFloat(
@@ -84,35 +107,32 @@ function showStationsForVehicle(vehicle)
 {
     stationsLayer.clearLayers();
 
-    const roadCode = vehicle.roadCode;
-    const roadKm   = parseFloat(vehicle.roadKm);
-
-    console.log('Vehicle:', vehicle);
-
     let count = 0;
 
     stationsData.features.forEach(f => {
 
         const p = f.properties;
 
-        if(String(p.roadCode) !== String(roadCode))
+        if(String(p.roadCode) !== String(vehicle.roadCode))
             return;
 
-        const stationKm = parseFloat(p.roadKm);
+        const stationLat = f.geometry.coordinates[1];
+        const stationLon = f.geometry.coordinates[0];
 
-        if(isNaN(stationKm))
-            return;
+        const dist = distanceKm(
+            vehicle.lat,
+            vehicle.lon,
+            stationLat,
+            stationLon
+        );
 
-        if(Math.abs(stationKm - roadKm) > 200)
+        if(dist > 200)
             return;
 
         count++;
 
         const marker = L.circleMarker(
-            [
-                f.geometry.coordinates[1],
-                f.geometry.coordinates[0]
-            ],
+            [stationLat, stationLon],
             {
                 radius:6,
                 color:stationColor(p.dt)
@@ -120,11 +140,12 @@ function showStationsForVehicle(vehicle)
         );
 
         marker.bindPopup(
-            '<b>' + p.azs + '</b><br>' +
-            'ДТ: ' + p.dt + '<br>' +
-            'Трасса: ' + p.road + '<br>' +
-            'Км: ' + p.roadKm + '<br>' +
-            p.addr
+            '<b>' + (p.azs || '') + '</b><br>' +
+            'ДТ: ' + (p.dt || '') + '<br>' +
+            'Трасса: ' + (p.road || '') + '<br>' +
+            'Км: ' + (p.roadKm || '') + '<br>' +
+            'Расстояние: ' + dist.toFixed(1) + ' км<br>' +
+            (p.addr || '')
         );
 
         stationsLayer.addLayer(marker);
@@ -133,8 +154,8 @@ function showStationsForVehicle(vehicle)
 
     document.getElementById('info').innerHTML =
         '<b>RN Fleet Map</b><br>' +
-        'Трасса: ' + roadCode + '<br>' +
-        'Км машины: ' + roadKm + '<br>' +
+        'Машина: ' + vehicle.name + '<br>' +
+        'Трасса: ' + vehicle.roadCode + '<br>' +
         'АЗС найдено: ' + count;
 }
 
@@ -146,16 +167,11 @@ Promise.all([
 
     stationsData = stations;
 
-    console.log('Vehicles loaded:', vehicles.features.length);
-    console.log('Stations loaded:', stations.features.length);
-
     const bounds = [];
 
     vehicles.features.forEach(f => {
 
         const p = f.properties;
-
-        console.log('Vehicle props:', p);
 
         const lat = f.geometry.coordinates[1];
         const lon = f.geometry.coordinates[0];
@@ -165,18 +181,20 @@ Promise.all([
         const marker = L.marker([lat, lon]);
 
         marker.bindPopup(
-            '<b>' + p.vehicle + '</b><br>' +
-            'Трасса: ' + p.roadCode + '<br>' +
-            'Км: ' + p.roadKm + '<br>' +
-            'Топливо: ' + p.fuel + '<br>' +
-            'Скорость: ' + p.speed
+            '<b>' + (p.vehicle || '') + '</b><br>' +
+            'Топливо: ' + (p.fuel || '') + '<br>' +
+            'Скорость: ' + (p.speed || '') + ' км/ч<br>' +
+            'Трасса: ' + (p.roadCode || '') + '<br>' +
+            'Км: ' + (p.roadKm || '')
         );
 
         marker.on('click', function(){
 
             showStationsForVehicle({
+                name     : p.vehicle,
                 roadCode : p.roadCode,
-                roadKm   : p.roadKm
+                lat      : lat,
+                lon      : lon
             });
 
         });
@@ -202,9 +220,9 @@ legend.onAdd = function()
 
     div.innerHTML =
         '<b>Цена ДТ</b><br>' +
-        '🟢 < 75<br>' +
+        '🟢 до 75<br>' +
         '🟠 75-80<br>' +
-        '🔴 > 80';
+        '🔴 выше 80';
 
     return div;
 };
