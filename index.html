@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="utf-8">
@@ -24,6 +23,7 @@ html,body,#map{
     border-radius:6px;
     box-shadow:0 0 10px rgba(0,0,0,.3);
     font-family:Arial;
+    min-width:220px;
 }
 
 .legend{
@@ -32,7 +32,6 @@ html,body,#map{
     border-radius:6px;
 }
 </style>
-
 </head>
 
 <body>
@@ -51,34 +50,44 @@ html,body,#map{
 const map = L.map('map').setView([55.75,37.61],5);
 
 L.tileLayer(
-'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-    maxZoom:19,
-    attribution:'© OpenStreetMap'
-}
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+        maxZoom:19,
+        attribution:'© OpenStreetMap'
+    }
 ).addTo(map);
 
-const vehicleLayer = L.layerGroup().addTo(map);
-const stationLayer = L.layerGroup().addTo(map);
+const vehiclesLayer = L.layerGroup().addTo(map);
+const stationsLayer = L.layerGroup().addTo(map);
 
 let stationsData = null;
 
 function stationColor(dt)
 {
     const price = parseFloat(
-        String(dt).replace(',','.')
+        String(dt).replace(',', '.')
     );
 
-    if(isNaN(price)) return 'gray';
-    if(price < 75) return 'green';
-    if(price <= 80) return 'orange';
+    if(isNaN(price))
+        return 'gray';
+
+    if(price < 75)
+        return 'green';
+
+    if(price <= 80)
+        return 'orange';
 
     return 'red';
 }
 
-function showStationsForVehicle(roadCode, roadKm)
+function showStationsForVehicle(vehicle)
 {
-    stationLayer.clearLayers();
+    stationsLayer.clearLayers();
+
+    const roadCode = vehicle.roadCode;
+    const roadKm   = parseFloat(vehicle.roadKm);
+
+    console.log('Vehicle:', vehicle);
 
     let count = 0;
 
@@ -86,12 +95,15 @@ function showStationsForVehicle(roadCode, roadKm)
 
         const p = f.properties;
 
-        if(p.roadCode !== roadCode)
+        if(String(p.roadCode) !== String(roadCode))
             return;
 
-        const km = Number(p.roadKm);
+        const stationKm = parseFloat(p.roadKm);
 
-        if(Math.abs(km - roadKm) > 200)
+        if(isNaN(stationKm))
+            return;
+
+        if(Math.abs(stationKm - roadKm) > 200)
             return;
 
         count++;
@@ -115,7 +127,7 @@ function showStationsForVehicle(roadCode, roadKm)
             p.addr
         );
 
-        stationLayer.addLayer(marker);
+        stationsLayer.addLayer(marker);
 
     });
 
@@ -127,18 +139,23 @@ function showStationsForVehicle(roadCode, roadKm)
 }
 
 Promise.all([
-    fetch('vehicles.geojson').then(r => r.json()),
-    fetch('stations.geojson').then(r => r.json())
+    fetch('vehicles.geojson?v=' + Date.now()).then(r => r.json()),
+    fetch('stations.geojson?v=' + Date.now()).then(r => r.json())
 ])
 .then(([vehicles, stations]) => {
 
     stationsData = stations;
+
+    console.log('Vehicles loaded:', vehicles.features.length);
+    console.log('Stations loaded:', stations.features.length);
 
     const bounds = [];
 
     vehicles.features.forEach(f => {
 
         const p = f.properties;
+
+        console.log('Vehicle props:', p);
 
         const lat = f.geometry.coordinates[1];
         const lon = f.geometry.coordinates[0];
@@ -149,20 +166,22 @@ Promise.all([
 
         marker.bindPopup(
             '<b>' + p.vehicle + '</b><br>' +
-            'Топливо: ' + p.fuel + '<br>' +
-            'Скорость: ' + p.speed + ' км/ч<br>' +
             'Трасса: ' + p.roadCode + '<br>' +
-            'Км: ' + p.roadKm
+            'Км: ' + p.roadKm + '<br>' +
+            'Топливо: ' + p.fuel + '<br>' +
+            'Скорость: ' + p.speed
         );
 
-        marker.on('click', () => {
-            showStationsForVehicle(
-                p.roadCode,
-                Number(p.roadKm)
-            );
+        marker.on('click', function(){
+
+            showStationsForVehicle({
+                roadCode : p.roadCode,
+                roadKm   : p.roadKm
+            });
+
         });
 
-        vehicleLayer.addLayer(marker);
+        vehiclesLayer.addLayer(marker);
 
     });
 
