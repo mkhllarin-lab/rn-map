@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <title>RN Map</title>
 
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
-html,body,#map{
-    height:100%;
-    margin:0;
+html, body, #map {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 </style>
 
@@ -23,18 +23,59 @@ html,body,#map{
 
 <script>
 
-const map = L.map('map').setView([55.75,37.61],5);
+const map = L.map('map').setView([55.75, 37.61], 5);
 
 L.tileLayer(
-'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-{
-    maxZoom:19
-}
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap'
+    }
 ).addTo(map);
 
-L.marker([55.75,37.61])
-.addTo(map)
-.bindPopup('Карта работает');
+fetch('vehicles.geojson')
+.then(response => response.json())
+.then(data => {
+
+    console.log('Vehicles loaded:', data);
+
+    const bounds = [];
+
+    data.features.forEach(feature => {
+
+        const lat = feature.geometry.coordinates[1];
+        const lon = feature.geometry.coordinates[0];
+
+        const props = feature.properties;
+
+        const marker = L.marker([lat, lon]);
+
+        marker.bindPopup(
+            '<b>' + (props.vehicle || '') + '</b><br>' +
+            'Топливо: ' + (props.fuel || '') + '<br>' +
+            'Скорость: ' + (props.speed || '') + ' км/ч<br>' +
+            'Курс: ' + (props.direction || '') + '°'
+        );
+
+        marker.addTo(map);
+
+        bounds.push([lat, lon]);
+
+    });
+
+    if(bounds.length > 0)
+    {
+        map.fitBounds(bounds);
+    }
+
+})
+.catch(error => {
+
+    console.error(error);
+
+    alert('Ошибка загрузки vehicles.geojson');
+
+});
 
 </script>
 
