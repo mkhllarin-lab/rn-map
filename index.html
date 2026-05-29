@@ -65,12 +65,101 @@ const stationLayer = L.markerClusterGroup();
 const vehicleLayer = L.layerGroup();
 
 const vehicleMarkers = [];
+let vehiclesData = null;
 
-fetch('stations.geojson')
+let vehiclesData = null;
+
+fetch('vehicles.geojson')
 .then(r => r.json())
-.then(data => {
+.then(vData => {
 
+```
+vehiclesData = vData;
+
+vData.features.forEach(f => {
+
+    const p = f.properties;
+
+    const marker = L.marker([
+        f.geometry.coordinates[1],
+        f.geometry.coordinates[0]
+    ]);
+
+    marker.vehicleName = p.vehicle;
+
+    marker.bindPopup(`
+        <b>${p.vehicle}</b><br>
+        Топливо: ${p.fuel}<br>
+        Скорость: ${p.speed} км/ч<br>
+        Курс: ${p.direction}°
+    `);
+
+    vehicleMarkers.push(marker);
+    vehicleLayer.addLayer(marker);
+
+});
+
+map.addLayer(vehicleLayer);
+loadStations();
+
+```
+
+});
+
+function distanceKm(lat1, lon1, lat2, lon2)
+{
+const R = 6371;
+
+```
+const dLat = (lat2-lat1) * Math.PI/180;
+const dLon = (lon2-lon1) * Math.PI/180;
+
+const a =
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1*Math.PI/180) *
+    Math.cos(lat2*Math.PI/180) *
+    Math.sin(dLon/2) *
+    Math.sin(dLon/2);
+
+return R * (2 * Math.atan2(
+    Math.sqrt(a),
+    Math.sqrt(1-a)
+));
+```
+
+}
+
+function loadStations()
+{
+
+
+```
     data.features.forEach(f => {
+
+        const lat = f.geometry.coordinates[1];
+        const lon = f.geometry.coordinates[0];
+
+        let nearVehicle = false;
+
+        for(const v of vehiclesData.features)
+        {
+            const vLat = v.geometry.coordinates[1];
+            const vLon = v.geometry.coordinates[0];
+
+            if(distanceKm(
+                lat,
+                lon,
+                vLat,
+                vLon
+            ) < 300)
+            {
+                nearVehicle = true;
+                break;
+            }
+        }
+
+        if(!nearVehicle)
+            return;
 
         const p = f.properties;
 
@@ -91,10 +180,7 @@ fetch('stations.geojson')
         }
 
         const marker = L.circleMarker(
-            [
-                f.geometry.coordinates[1],
-                f.geometry.coordinates[0]
-            ],
+            [lat, lon],
             {
                 radius:5,
                 color:color
@@ -114,12 +200,16 @@ fetch('stations.geojson')
     });
 
     map.addLayer(stationLayer);
-
 });
+```
+
+}
 
 fetch('vehicles.geojson')
 .then(r => r.json())
 .then(data => {
+
+    vehiclesData = data;
 
     data.features.forEach(f => {
 
@@ -148,6 +238,102 @@ fetch('vehicles.geojson')
     map.addLayer(vehicleLayer);
 
 });
+
+function distanceKm(lat1, lon1, lat2, lon2)
+{
+const R = 6371;
+
+```
+const dLat = (lat2-lat1) * Math.PI/180;
+const dLon = (lon2-lon1) * Math.PI/180;
+
+const a =
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1*Math.PI/180) *
+    Math.cos(lat2*Math.PI/180) *
+    Math.sin(dLon/2) *
+    Math.sin(dLon/2);
+
+return R * (2 * Math.atan2(
+    Math.sqrt(a),
+    Math.sqrt(1-a)
+));
+```
+
+}
+
+function loadStations()
+{
+fetch('stations.geojson')
+.then(r => r.json())
+.then(data => {
+
+```
+    data.features.forEach(f => {
+
+        const lat = f.geometry.coordinates[1];
+        const lon = f.geometry.coordinates[0];
+
+        let nearVehicle = false;
+
+        for(const v of vehiclesData.features)
+        {
+            const vLat = v.geometry.coordinates[1];
+            const vLon = v.geometry.coordinates[0];
+
+            if(distanceKm(lat,lon,vLat,vLon) < 300)
+            {
+                nearVehicle = true;
+                break;
+            }
+        }
+
+        if(!nearVehicle)
+            return;
+
+        const p = f.properties;
+
+        let color = 'gray';
+
+        const dt = parseFloat(
+            String(p.dt).replace(',', '.')
+        );
+
+        if(!isNaN(dt))
+        {
+            if(dt < 75)
+                color = 'green';
+            else if(dt <= 80)
+                color = 'orange';
+            else
+                color = 'red';
+        }
+
+        const marker = L.circleMarker(
+            [lat,lon],
+            {
+                radius:5,
+                color:color
+            }
+        );
+
+        marker.bindPopup(`
+            <b>${p.azs || ''}</b><br>
+            ДТ: ${p.dt || ''}<br>
+            ${p.road || ''}<br>
+            км: ${p.km || ''}<br>
+            ${p.addr || ''}
+        `);
+
+        stationLayer.addLayer(marker);
+
+    });
+
+    map.addLayer(stationLayer);
+});
+```
+
+}
 
 L.control.layers(
 {
