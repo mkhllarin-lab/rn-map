@@ -1,0 +1,469 @@
+﻿{
+    "features":  [
+                     {
+                         "properties":  {
+                                            "direction":  50,
+                                            "vehicle":  "739-РђРђ698NX",
+                                            "fuel":  383.3984962406015,
+                                            "speed":  0
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              22.241885,
+                                                              50.1506166
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  73,
+                                            "vehicle":  "2309-c343РѕРј",
+                                            "fuel":  1224.0519480519479,
+                                            "speed":  72
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              104.8744366,
+                                                              51.495135
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  331,
+                                            "vehicle":  "2424-С…365СЂС‚",
+                                            "fuel":  228.3916230366492,
+                                            "speed":  76
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              98.60098,
+                                                              55.5857683
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  294,
+                                            "vehicle":  "2427-С…621С‚С‚",
+                                            "fuel":  333.22389026892756,
+                                            "speed":  0
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              84.56379,
+                                                              55.6622
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  314,
+                                            "vehicle":  "2310-СЃ793РѕРє",
+                                            "fuel":  392.7581941867656,
+                                            "speed":  49
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              103.780425,
+                                                              52.475295
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  330,
+                                            "vehicle":  "2425-o354РЅРј",
+                                            "fuel":  417.98983739837405,
+                                            "speed":  20
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              107.4588033,
+                                                              51.4189083
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  266,
+                                            "vehicle":  "2105-Сѓ107РІС‚",
+                                            "fuel":  837.6905751905751,
+                                            "speed":  94
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              113.3711733,
+                                                              52.07461
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  291,
+                                            "vehicle":  "722-NR907MM",
+                                            "fuel":  193.0548458524953,
+                                            "speed":  80
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              17.1408083,
+                                                              48.0330133
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  158,
+                                            "vehicle":  "2409-e086py",
+                                            "fuel":  436.6177339901478,
+                                            "speed":  88
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              51.748315,
+                                                              55.5600816
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  266,
+                                            "vehicle":  "736-AA902KD",
+                                            "fuel":  725.6813186813188,
+                                            "speed":  83
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              16.843645,
+                                                              46.449425
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  46,
+                                            "vehicle":  "725Рї-NR332YU",
+                                            "fuel":  0.0,
+                                            "speed":  68
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              24.848045,
+                                                              52.83481
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  265,
+                                            "vehicle":  "734-AA979JH",
+                                            "fuel":  152.31020408163266,
+                                            "speed":  0
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              21.7192866,
+                                                              52.2024733
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  231,
+                                            "vehicle":  "2113-С‚679РµСѓ",
+                                            "fuel":  512.1375921375922,
+                                            "speed":  80
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              112.4308116,
+                                                              51.371425
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  265,
+                                            "vehicle":  "2406-Рµ830С…СЂ",
+                                            "fuel":  966.266253869969,
+                                            "speed":  81
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              45.7048166,
+                                                              56.0465833
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  320,
+                                            "vehicle":  "2108-Рµ769РµС‚Р­",
+                                            "fuel":  959.6804915514592,
+                                            "speed":  76
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              116.5040716,
+                                                              50.4146516
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  45,
+                                            "vehicle":  "2303-c386op",
+                                            "fuel":  391.2681791739384,
+                                            "speed":  71
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              24.8485883,
+                                                              52.8350616
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  65,
+                                            "vehicle":  "742Рї-AA216YY",
+                                            "fuel":  309.9105392156863,
+                                            "speed":  82
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              12.6838183,
+                                                              45.7379883
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  122,
+                                            "vehicle":  "2416-a332py",
+                                            "fuel":  435.4901960784314,
+                                            "speed":  90
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              85.4061483,
+                                                              55.36429
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  39,
+                                            "vehicle":  "2111-Рѕ114РµСЃ",
+                                            "fuel":  1380.337636544191,
+                                            "speed":  10
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              76.9239233,
+                                                              55.266035
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  262,
+                                            "vehicle":  "713Рї-NR915YV",
+                                            "fuel":  1.0,
+                                            "speed":  82
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              26.045525,
+                                                              53.181575
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  123,
+                                            "vehicle":  "2121-С‚768С…РЅ",
+                                            "fuel":  913.3071278825996,
+                                            "speed":  60
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              60.7361116,
+                                                              56.70905
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  65,
+                                            "vehicle":  "738-AA178KZ",
+                                            "fuel":  519.5524104378594,
+                                            "speed":  83
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              12.6872683,
+                                                              45.739075
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  201,
+                                            "vehicle":  "712 - NR398MN",
+                                            "fuel":  724.6299871299871,
+                                            "speed":  83
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              10.0995633,
+                                                              45.1980383
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  263,
+                                            "vehicle":  "2102-Р°559РІСѓ",
+                                            "fuel":  1274.1592920353983,
+                                            "speed":  82
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              26.0450166,
+                                                              53.1815233
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  56,
+                                            "vehicle":  "739Рї-AA279YO",
+                                            "fuel":  0.0,
+                                            "speed":  83
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              12.4169916,
+                                                              45.6173966
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  1,
+                                            "vehicle":  "2404-e451xo",
+                                            "fuel":  721.2303382891618,
+                                            "speed":  0
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              117.378035,
+                                                              49.626385
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  283,
+                                            "vehicle":  "2420-a248py",
+                                            "fuel":  220.65126924677486,
+                                            "speed":  82
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              52.6962,
+                                                              55.64161
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  58,
+                                            "vehicle":  "737-AA966KD",
+                                            "fuel":  399.74721941354903,
+                                            "speed":  81
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              12.4825816,
+                                                              45.6503083
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     },
+                     {
+                         "properties":  {
+                                            "direction":  164,
+                                            "vehicle":  "2119-РЅ715РєРє",
+                                            "fuel":  647.2727272727273,
+                                            "speed":  80
+                                        },
+                         "type":  "Feature",
+                         "geometry":  {
+                                          "coordinates":  [
+                                                              27.4083983,
+                                                              53.8984566
+                                                          ],
+                                          "type":  "Point"
+                                      }
+                     }
+                 ],
+    "type":  "FeatureCollection"
+}

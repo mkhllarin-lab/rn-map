@@ -1,0 +1,234 @@
+[
+  {
+    "vehicle": "739-АА698NX",
+    "fuel": 383.3984962406015,
+    "latitude": 50.1506166,
+    "longitude": 22.241885,
+    "direction": 50,
+    "speed": 0
+  },
+  {
+    "vehicle": "2309-c343ом",
+    "fuel": 1224.0519480519479,
+    "latitude": 51.495135,
+    "longitude": 104.8744366,
+    "direction": 73,
+    "speed": 72
+  },
+  {
+    "vehicle": "2424-х365рт",
+    "fuel": 228.3916230366492,
+    "latitude": 55.5857683,
+    "longitude": 98.60098,
+    "direction": 331,
+    "speed": 76
+  },
+  {
+    "vehicle": "2427-х621тт",
+    "fuel": 333.22389026892756,
+    "latitude": 55.6622,
+    "longitude": 84.56379,
+    "direction": 294,
+    "speed": 0
+  },
+  {
+    "vehicle": "2310-с793ок",
+    "fuel": 392.7581941867656,
+    "latitude": 52.475295,
+    "longitude": 103.780425,
+    "direction": 314,
+    "speed": 49
+  },
+  {
+    "vehicle": "2425-o354нм",
+    "fuel": 417.98983739837405,
+    "latitude": 51.4189083,
+    "longitude": 107.4588033,
+    "direction": 330,
+    "speed": 20
+  },
+  {
+    "vehicle": "2105-у107вт",
+    "fuel": 837.6905751905751,
+    "latitude": 52.07461,
+    "longitude": 113.3711733,
+    "direction": 266,
+    "speed": 94
+  },
+  {
+    "vehicle": "722-NR907MM",
+    "fuel": 193.0548458524953,
+    "latitude": 48.0330133,
+    "longitude": 17.1408083,
+    "direction": 291,
+    "speed": 80
+  },
+  {
+    "vehicle": "2409-e086py",
+    "fuel": 436.6177339901478,
+    "latitude": 55.5600816,
+    "longitude": 51.748315,
+    "direction": 158,
+    "speed": 88
+  },
+  {
+    "vehicle": "736-AA902KD",
+    "fuel": 725.6813186813188,
+    "latitude": 46.449425,
+    "longitude": 16.843645,
+    "direction": 266,
+    "speed": 83
+  },
+  {
+    "vehicle": "725п-NR332YU",
+    "fuel": 0.0,
+    "latitude": 52.83481,
+    "longitude": 24.848045,
+    "direction": 46,
+    "speed": 68
+  },
+  {
+    "vehicle": "734-AA979JH",
+    "fuel": 152.31020408163266,
+    "latitude": 52.2024733,
+    "longitude": 21.7192866,
+    "direction": 265,
+    "speed": 0
+  },
+  {
+    "vehicle": "2113-т679еу",
+    "fuel": 512.1375921375922,
+    "latitude": 51.371425,
+    "longitude": 112.4308116,
+    "direction": 231,
+    "speed": 80
+  },
+  {
+    "vehicle": "2406-е830хр",
+    "fuel": 966.266253869969,
+    "latitude": 56.0465833,
+    "longitude": 45.7048166,
+    "direction": 265,
+    "speed": 81
+  },
+  {
+    "vehicle": "2108-е769етЭ",
+    "fuel": 959.6804915514592,
+    "latitude": 50.4146516,
+    "longitude": 116.5040716,
+    "direction": 320,
+    "speed": 76
+  },
+  {
+    "vehicle": "2303-c386op",
+    "fuel": 391.2681791739384,
+    "latitude": 52.8350616,
+    "longitude": 24.8485883,
+    "direction": 45,
+    "speed": 71
+  },
+  {
+    "vehicle": "742п-AA216YY",
+    "fuel": 309.9105392156863,
+    "latitude": 45.7379883,
+    "longitude": 12.6838183,
+    "direction": 65,
+    "speed": 82
+  },
+  {
+    "vehicle": "2416-a332py",
+    "fuel": 435.4901960784314,
+    "latitude": 55.36429,
+    "longitude": 85.4061483,
+    "direction": 122,
+    "speed": 90
+  },
+  {
+    "vehicle": "2111-о114ес",
+    "fuel": 1380.337636544191,
+    "latitude": 55.266035,
+    "longitude": 76.9239233,
+    "direction": 39,
+    "speed": 10
+  },
+  {
+    "vehicle": "713п-NR915YV",
+    "fuel": 1.0,
+    "latitude": 53.181575,
+    "longitude": 26.045525,
+    "direction": 262,
+    "speed": 82
+  },
+  {
+    "vehicle": "2121-т768хн",
+    "fuel": 913.3071278825996,
+    "latitude": 56.70905,
+    "longitude": 60.7361116,
+    "direction": 123,
+    "speed": 60
+  },
+  {
+    "vehicle": "738-AA178KZ",
+    "fuel": 519.5524104378594,
+    "latitude": 45.739075,
+    "longitude": 12.6872683,
+    "direction": 65,
+    "speed": 83
+  },
+  {
+    "vehicle": "712 - NR398MN",
+    "fuel": 724.6299871299871,
+    "latitude": 45.1980383,
+    "longitude": 10.0995633,
+    "direction": 201,
+    "speed": 83
+  },
+  {
+    "vehicle": "2102-а559ву",
+    "fuel": 1274.1592920353983,
+    "latitude": 53.1815233,
+    "longitude": 26.0450166,
+    "direction": 263,
+    "speed": 82
+  },
+  {
+    "vehicle": "739п-AA279YO",
+    "fuel": 0.0,
+    "latitude": 45.6173966,
+    "longitude": 12.4169916,
+    "direction": 56,
+    "speed": 83
+  },
+  {
+    "vehicle": "2404-e451xo",
+    "fuel": 721.2303382891618,
+    "latitude": 49.626385,
+    "longitude": 117.378035,
+    "direction": 1,
+    "speed": 0
+  },
+  {
+    "vehicle": "2420-a248py",
+    "fuel": 220.65126924677486,
+    "latitude": 55.64161,
+    "longitude": 52.6962,
+    "direction": 283,
+    "speed": 82
+  },
+  {
+    "vehicle": "737-AA966KD",
+    "fuel": 399.74721941354903,
+    "latitude": 45.6503083,
+    "longitude": 12.4825816,
+    "direction": 58,
+    "speed": 81
+  },
+  {
+    "vehicle": "2119-н715кк",
+    "fuel": 647.2727272727273,
+    "latitude": 53.8984566,
+    "longitude": 27.4083983,
+    "direction": 164,
+    "speed": 80
+  }
+]
